@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加删除节点</title>
+	<style type="text/css">
+        #frm div{
+        	border:#0000ff 2px solid;
+        	width: 200px;
+        	height: 20px;
+        }
+	</style>
+	<script type="text/javascript">
+        function add(){
+        	obj=document.getElementById("frm");
+        	for (var i = 0; i < obj.childNodes.length; i++) {
+        		if(obj.childNodes[i].nodeType==3)
+        			obj.removeChild(obj.childNodes[i]);
+        	}
+        	new_div=document.createElement("div");
+        	new_text=document.createTextNode("");
+
+        	obj.appendChild(new_div);
+        	new_div.appendChild(new_text);
+        	n=obj.childNodes.length;
+        	new_text.nodeValue="节点"+n;
+        }
+
+        function del(){
+        	obj=document.getElementById("frm");
+        	for (var i = 0; i < obj.childNodes.length; i++) {
+        		if(obj.childNodes[i].nodeType==3)
+        			obj.removeChild(obj.childNodes[i]);
+        	}
+        	n=obj.childNodes.length;
+        	obj.removeChild(obj.childNodes[n-1]);
+        }
+	</script>
+</head>
+<body>
+	<div id="frm">
+        <div>节点1</div>
+        <div>节点2</div>
+        <div>节点3</div>
+        <div>节点4</div>
+	</div>
+	<button onclick="add()">添加节点到后面</button>
+	<button onclick="del()">删除后面节点</button>
+</body>
+</html>
